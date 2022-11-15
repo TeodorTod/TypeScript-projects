@@ -1,16 +1,23 @@
-import { Button, Card } from "react-bootstrap";
-import formatCurrency from '../utils/formatCurrency';
-
+import { Button, Card } from "react-bootstrap"
+import  {useShoppingCart}  from "../context/ShoppingCartContext"
+import formatCurrency from "../utils/formatCurrency"
 
 type StoreItemProps = {
-    id: number,
-    name: string,
-    price: number,
+    id: number
+    name: string
+    price: number
     imgUrl: string
 }
 
-function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
-    const quantity = 0;
+export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
+    const {
+        getItemQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        removeFromCart,
+    } = useShoppingCart()
+    const quantity = getItemQuantity(id)
+
     return (
         <Card className="h-100">
             <Card.Img
@@ -26,29 +33,35 @@ function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
                 </Card.Title>
                 <div className="mt-auto">
                     {quantity === 0 ? (
-                        <Button className="w-100">
-                            +Add To Cart
+                        <Button className="w-100" onClick={() => increaseCartQuantity(id)}>
+                            + Add To Cart
                         </Button>
-                    ) : <div
-                        className="d-flex align-items-center flex-column"
-                        style={{ gap: ".5rem" }}
-                    >
+                    ) : (
                         <div
-                            className="d-flex align-items-center justify-content-center"
+                            className="d-flex align-items-center flex-column"
                             style={{ gap: ".5rem" }}
                         >
-                            <Button>-</Button>
-                            <div>
-                                <span className="fs-3">{quantity}</span> in cart
+                            <div
+                                className="d-flex align-items-center justify-content-center"
+                                style={{ gap: ".5rem" }}
+                            >
+                                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
+                                <div>
+                                    <span className="fs-3">{quantity}</span> in cart
+                                </div>
+                                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
                             </div>
-                            <Button>+</Button>
+                            <Button
+                                onClick={() => removeFromCart(id)}
+                                variant="danger"
+                                size="sm"
+                            >
+                                Remove
+                            </Button>
                         </div>
-                        <Button variant="danger" size="sm">Remove</Button>
-                    </div>}
+                    )}
                 </div>
             </Card.Body>
         </Card>
     )
 }
-
-export default StoreItem
