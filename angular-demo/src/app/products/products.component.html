@@ -4,14 +4,15 @@
 
 <app-search></app-search>
 <app-filter 
-   [all]="getTotalCourses()"
+   [total]="getTotalCourses()"
    [free]="getTotalFreeCourses()"
    [premium]="getTotalPremiumCourses()"
+   (filterButton)="onFilterChange($event)"
 ></app-filter>
 
 <ng-container *ngFor="let course of courses">
     <!-- courseCountRadioButton === 'All' || courseCountRadioButton === course.type -->
-    <div class="course-container">
+    <div class="course-container" *ngIf="courseCounRadio === 'All' || courseCounRadio === course.type">
         <div class="course-card">
             <div>
                 <img [src]="course.image" style="width:220px; height:140px;">

@@ -58,4 +58,10 @@ export class ProductsComponent {
     return this.courses.filter(x => x.type === 'Premium').length;
   }
 
+  courseCounRadio: string = 'All';
+
+  onFilterChange(data: string) {
+    this.courseCounRadio = data;    
+  }
+
 }
