@@ -2,7 +2,35 @@
     <h3>Number is: {{item}}</h3>
 </div> -->
 
-<div *ngFor="let name of products; let i = index">
-    <h3 style="display: inline"> {{i + 1}}.First Name: {{name.firstName}} ---</h3>
-    <h3 style="display: inline"> Last Name: {{name.lastName}}</h3>
-</div>
+<app-search></app-search>
+<app-filter 
+   [all]="getTotalCourses()"
+   [free]="getTotalFreeCourses()"
+   [premium]="getTotalPremiumCourses()"
+></app-filter>
+
+<ng-container *ngFor="let course of courses">
+    <!-- courseCountRadioButton === 'All' || courseCountRadioButton === course.type -->
+    <div class="course-container">
+        <div class="course-card">
+            <div>
+                <img [src]="course.image" style="width:220px; height:140px;">
+            </div>
+            <div class="course-name">
+                <h4>{{ course.name}}</h4>
+            </div>
+            <div class="course-description">
+                <p>{{course.description.slice(0, 80)}}...</p>
+            </div>
+            <div class="details">
+                <div class="course-type" [ngStyle]="{color: course.type === 'Free' ? 'Green' : 'Red'}">{{course.type}}
+                </div>
+                <div class="course-price"><b>Price:</b> ${{course.price}}</div>
+            </div>
+            <div class="course-buttons">
+                <button class="btn btn-buy">Buy Now</button>
+                <button class="btn btn-show">Show Deatils</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
