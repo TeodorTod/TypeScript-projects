@@ -2,16 +2,16 @@
     <h3>Number is: {{item}}</h3>
 </div> -->
 
-<app-search (searchTextChange)="onSearchTextEnter($event)"></app-search>
+<!-- <app-search (searchTextChange)="onSearchTextEnter($event)"></app-search>
 <app-filter 
    [total]="getTotalCourses()"
    [free]="getTotalFreeCourses()"
    [premium]="getTotalPremiumCourses()"
    (filterButton)="onFilterChange($event)"
-></app-filter>
+></app-filter> -->
 
-<ng-container *ngFor="let course of courses">
-    <!-- courseCounRadio === 'All' || courseCounRadio === course.type -->
+<!-- <ng-container *ngFor="let course of courses">
+
     <div class="course-container" *ngIf="searchText === '' || course.name.toLowerCase().includes(searchText) ">
         <div class="course-card">
             <div>
@@ -34,4 +34,9 @@
             </div>
         </div>
     </div>
-</ng-container>
+</ng-container> -->
+
+
+<app-demo></app-demo>
+<app-customer-list #customer></app-customer-list>
+<h3>You have selected: {{customer.selectedCustomer?.name}}</h3>
