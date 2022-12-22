@@ -59,9 +59,15 @@ export class ProductsComponent {
   }
 
   courseCounRadio: string = 'All';
+  searchText: string = '';
 
   onFilterChange(data: string) {
     this.courseCounRadio = data;    
+  }
+
+  onSearchTextEnter(searchValue: string) {
+    this.searchText = searchValue;
+    
   }
 
 }
