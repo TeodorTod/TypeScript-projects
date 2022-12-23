@@ -5,23 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContainerComponent } from './Container/container.component';
 import { NavComponent } from './nav/nav.component';
-import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
 import { DemoComponent } from './demo/demo.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     NavComponent,
-    HeaderComponent,
     SearchComponent,
     ProductsComponent,
     DemoComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

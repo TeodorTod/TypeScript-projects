@@ -1,3 +1,14 @@
 <div class="wrapper">
     <app-container></app-container>
 </div>
+<div>
+    <label>DOB: </label>
+    <input type="date" #dobInput (blur)="calculateAge()">
+</div>
+<br>
+<div>
+    <label>Age: </label>
+    <input type="text" #ageInput>
+</div>
+<app-test></app-test>
+{{testComp.sayHello()}}
