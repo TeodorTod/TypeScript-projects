@@ -1,14 +1,26 @@
-<div class="wrapper">
-    <app-container></app-container>
+<div class="container">
+    <h2>New in Smart Phones</h2>
+
+    <div class="more-products">
+        <app-single-product>
+            <h4 class="title">New in iPhone</h4>
+            <button class="btn btn-more">Show more in iPhone</button>
+
+        </app-single-product>
+        <app-single-product>
+            <h4 class="title">New in Samsung</h4>
+            <button class="btn btn-more">Show more in Samsung</button>
+
+        </app-single-product>
+        <app-single-product>
+            <h4 class="title">New in OnePlus</h4>
+            <button class="btn btn-more">Show more in OnePlus</button>
+
+        </app-single-product>
+        <app-single-product>
+            <h4 class="title">New in MI</h4>
+            <button class="btn btn-more">Show more in MI</button>
+
+        </app-single-product>
+    </div>
 </div>
-<div>
-    <label>DOB: </label>
-    <input type="date" #dobInput (blur)="calculateAge()">
-</div>
-<br>
-<div>
-    <label>Age: </label>
-    <input type="text" #ageInput>
-</div>
-<app-test></app-test>
-{{testComp.sayHello()}}
