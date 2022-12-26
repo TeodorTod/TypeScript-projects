@@ -8,15 +8,13 @@ import { TestComponent } from './test/test.component';
 })
 export class AppComponent {
   title = 'angular-demo';
+  currentItem = 'academy';
 
-  @ViewChild('dobInput') dateOfBirth: any = ElementRef;
-  @ViewChild('ageInput') age: any = ElementRef;
-  @ViewChild(TestComponent, {static: true}) testComp: any = TestComponent;
+  inputText: string = '';
 
-  calculateAge() {
-    let birthYear = new Date(this.dateOfBirth.nativeElement.value).getFullYear();
-    let currentYear = new Date().getFullYear();
-    let age = currentYear - birthYear;
-    this.age.nativeElement.value = age;
+  onSubmit(inputEl: HTMLInputElement) {
+    this.inputText = inputEl.value;
+    
   }
+
 }

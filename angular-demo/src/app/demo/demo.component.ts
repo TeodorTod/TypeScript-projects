@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./demo.component.css']
 })
 export class DemoComponent {
-
-  sayHello(inputEl: HTMLInputElement) {
-    alert(`Hello ${inputEl.value}`)
-    console.log(inputEl);
-    
-  }
+  @Input() value = '';
+ 
 }
