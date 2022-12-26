@@ -1,5 +1,7 @@
 <div class="container">
     <input type="text" #input>
     <button (click)="onSubmit(input)">Submit</button>
-    <app-demo [value]="inputText"></app-demo>
+    <app-demo [value]="inputText">
+        <h4>This is projected content</h4>
+    </app-demo>
 </div>
