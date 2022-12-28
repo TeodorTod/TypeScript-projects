@@ -12,6 +12,7 @@ import { DemoComponent } from './demo/demo.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { TestComponent } from './test/test.component';
 import { SingleProductComponent } from './single-product/single-product.component';
+import { HighlightDirective } from './CustomDirective/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SingleProductComponent } from './single-product/single-product.componen
     DemoComponent,
     CustomerListComponent,
     TestComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
