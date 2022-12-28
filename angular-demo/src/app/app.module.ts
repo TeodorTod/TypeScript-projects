@@ -13,6 +13,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { TestComponent } from './test/test.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { HighlightDirective } from './CustomDirective/highlight.directive';
+import { HoverDirective } from './CustomDirective/hover.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HighlightDirective } from './CustomDirective/highlight.directive';
     CustomerListComponent,
     TestComponent,
     SingleProductComponent,
-    HighlightDirective
+    HighlightDirective,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
