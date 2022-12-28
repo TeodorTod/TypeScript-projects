@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingleProductComponent } from './single-product.component';
+import { JavascriptComponent } from './javascript.component';
 
-describe('SingleProductComponent', () => {
-  let component: SingleProductComponent;
-  let fixture: ComponentFixture<SingleProductComponent>;
+describe('JavascriptComponent', () => {
+  let component: JavascriptComponent;
+  let fixture: ComponentFixture<JavascriptComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleProductComponent ]
+      declarations: [ JavascriptComponent ]
     })
     .compileComponents();
+  });
 
-    fixture = TestBed.createComponent(SingleProductComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(JavascriptComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
