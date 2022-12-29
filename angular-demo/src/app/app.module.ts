@@ -4,13 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { AdduserComponent } from './adduser/adduser.component';
+import { AllusersComponent } from './allusers/allusers.component';
+;
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdduserComponent,
+    AllusersComponent,
    
   ],
   imports: [

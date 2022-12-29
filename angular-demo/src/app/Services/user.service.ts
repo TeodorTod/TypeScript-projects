@@ -1,23 +1,8 @@
-import { Injectable } from "@angular/core"
-import { loggerService } from "./logger.service"
-
-
-@Injectable()
-
-export class UserService{
-
-    constructor (private newUser: loggerService) {
-
-    }
-
+export class UserService {
     users = [
-        {name: 'John', status: 'active'},
-        {name: 'Mark', status: 'inactive'},
-        {name: 'Steve', status: 'active'},
+        {name: 'John', job: 'Teacher', gender: 'Male', country: 'United States', age: 35, avatar: 'assets/avatar/john.jpeg'},
+        {name: 'Mark', job: 'Designer', gender: 'Male', country: 'Germany', age: 35, avatar: 'assets/avatar/mark.jpeg'},
+        {name: 'Merry', job: 'Lawyer', gender: 'Female', country: 'Ireland', age: 35, avatar: 'assets/avatar/merry.jpeg'},
+        {name: 'Steve', job: 'Doctor', gender: 'Male', country: 'India', age: 35, avatar: 'assets/avatar/steve.jpeg'}
     ]
-
-    addNewUser(name: string, status: string) {
-        this.users.push({name: name, status: status})
-        this.newUser.LogMessage(name, status);
-    }
 }

@@ -1,25 +1,7 @@
 .container{
-    width: 640px;
+    width: 720px;
     margin: 30px auto;
-    padding: 20px 30px;
-    background-color: #f7f7f7;
-    font-family: 'Lucida Sans';
-}
-.user-div{
+    padding: 10px 20px;
+    background-color: #f4f4f4;
     display: flex;
-    margin: 5px 0px;
-}
-.user-name{
-    width:70%;
-    padding: 10px 30px;
-    background-color: #eee;
-}
-.user-status{
-    width:10%;
-    padding: 10px 40px;
-    background-color: #FADBD8;
-}
-.status-btn{
-    width:10%;
-    margin: 0px 10px;
 }
