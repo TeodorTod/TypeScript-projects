@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AllusersComponent } from './allusers/allusers.component';
+import { UserdetailComponent } from './userdetail/userdetail.component';
 ;
 
 
@@ -12,6 +13,7 @@ import { AllusersComponent } from './allusers/allusers.component';
   declarations: [
     AppComponent,
     AllusersComponent,
+    UserdetailComponent,
    
   ],
   imports: [
