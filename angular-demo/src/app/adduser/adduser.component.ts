@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { loggerService } from '../Services/logger.service';
 import { UserService } from '../Services/user.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class AdduserComponent {
 
   AddUser() {
     this.userService.addNewUser(this.username, this.status);
-    console.log(this.userService.users);
+    // console.log(this.userService.users);
+    
     
   }
 }
