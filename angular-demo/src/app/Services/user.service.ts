@@ -12,7 +12,7 @@ export class UserService {
 
     onShowDetailsClicked = new EventEmitter<{name: string, job: string, gender: string, country: string, age: number, avatar: string}>();
 
-    ShowUserDetails(user: {name: string, job: string, gender: string, country: string, age: number, avatar: string}) {
+    ShowUserDetails(user: {name: string, job: string, gender: string, country: string, age: number, avatar: any}) {
         this.onShowDetailsClicked.emit(user);
     }
 
