@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-test';
+
+  persons =['Ivan', 'Pesho', 'Gosho']
+
+  getName() {
+    return this.persons[1];
+  }
+
+
 }
