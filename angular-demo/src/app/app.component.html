@@ -1,1 +1,11 @@
-<app-company></app-company>
+<!-- <div *ngFor="let single of name" >
+    <h2>{{single.id}}</h2>
+</div> -->
+
+<button (click)="loadPosts()">Load Posts</button>
+
+<div *ngFor="let post of posts; let i = index">
+    <h2>{{i}}<h2>{{post.title}}</h2></h2>
+    <h2>{{post.body}}</h2>
+    <hr>
+</div>
