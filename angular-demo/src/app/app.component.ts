@@ -48,18 +48,37 @@ export class AppComponent implements OnInit {
   //     }), (err: any) =>(alert(JSON.stringify(err))) 
   // }
 
-  myObservable = new Observable((observer) => {
+  // myObservable = new Observable((observer) => {
+  //   console.log('Observable starts');
+  //   observer.next('1')
+  //   observer.next('2')
+  //   observer.next('3')
+  //   // observer.error(new Error('Something went wrong'))
+  //   observer.next('4')
+  //   observer.next('5')
+  //   observer.complete()
+  // });
+
+  myObservable = Observable.create((observer: any) => {
     console.log('Observable starts');
     observer.next('1')
     observer.next('2')
     observer.next('3')
+    // observer.error(new Error('Something went wrong'))
     observer.next('4')
     observer.next('5')
+    observer.complete()
   });
 
   ngOnInit() {
-    this.myObservable.subscribe((val) => {
+    this.myObservable.subscribe((val: any) => {
       console.log(val);
+      
+    }, (error: any) => {
+      alert(error.message);
+      
+    }, () => {
+      console.log('finito');
       
     })
   }
