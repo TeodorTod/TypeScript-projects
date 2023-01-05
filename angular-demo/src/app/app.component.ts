@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { filter, map, Observable } from 'rxjs';
+import { filter, map, Observable, interval } from 'rxjs';
 import { DataService } from './data.service';
 
 
@@ -62,20 +62,20 @@ export class AppComponent implements OnInit {
   //   observer.complete()
   // });
 
-  myObservable = Observable.create((observer: any) => {
-    console.log('Observable starts');
-    observer.next('1')
-    observer.next('2')
-    observer.next('3')
-    // observer.error(new Error('Something went wrong'))
-    observer.next('4')
-    observer.next('5')
-    observer.complete()
-  }).pipe(map((val: any) => {
-    return val * 5;
-  }), filter((val: any) => {
-    return val >= 15
-  }));
+  // myObservable = Observable.create((observer: any) => {
+  //   console.log('Observable starts');
+  //   observer.next('1')
+  //   observer.next('2')
+  //   observer.next('3')
+  //   // observer.error(new Error('Something went wrong'))
+  //   observer.next('4')
+  //   observer.next('5')
+  //   observer.complete()
+  // }).pipe(map((val: any) => {
+  //   return val * 5;
+  // }), filter((val: any) => {
+  //   return val >= 15
+  // }));
   
 
   // transformedObservable = this.myObservable.pipe(map((val: any) => {
@@ -88,17 +88,29 @@ export class AppComponent implements OnInit {
   //   return val >= 15
   // }))
 
+  counterObservable = interval(1000);
+  counterSub: any;
+
   ngOnInit() {
-    this.myObservable.subscribe((val: any) => {
-      console.log(`The value from Observable is ${val}`);
+    // this.myObservable.subscribe((val: any) => {
+    //   console.log(`The value from Observable is ${val}`);
       
-    }, (error: any) => {
-      alert(error.message);
+    // }, (error: any) => {
+    //   alert(error.message);
       
-    }, () => {
-      console.log('finito');
+    // }, () => {
+    //   console.log('finito');
+      
+    // })
+
+    this.counterSub = this.counterObservable.subscribe((val) => {
+      console.log(val);
       
     })
+  }
+
+  unsubscribe() {
+    this.counterSub.unsubscribe();
   }
 
   
