@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CoursesService } from '../Services/courses.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent {
-  courses = [];
+export class CoursesComponent implements OnInit {
+
+  constructor(private coursesService: CoursesService) { }
+
+  courses: any = [];
+
+  ngOnInit(): void {
+    this.courses = this.coursesService.courses;
+  }
+
 }

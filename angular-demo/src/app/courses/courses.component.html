@@ -4,21 +4,20 @@
         <div class="course-container">
             <div class="course-card">
                 <div>
-                    <img [src]="" style="width:220px; height:140px;">
+                    <img [src]="course.image" style="width:220px; height:140px;">
                 </div>
-                <div class="course-name"><h4></h4></div>
-                <div class="course-description"><p></p></div>
+                <div class="course-name"><h4>{{ course.name}}</h4></div>
+                <div class="course-description"><p>{{course.description.slice(0, 80)}}...</p></div>
                 <div class="details">
-                    <div class="course-type"></div>
-                    <div class="course-price"><b>Price:</b> </div>
+                    <div class="course-type" [ngStyle]="{color: course.type === 'Free' ? 'Green' : 'Red'}">{{course.type}}</div>
+                    <div class="course-price"><b>Price:</b> ${{course.price}}</div>
                 </div>
                 <div class="course-buttons">
                     <button class="btn btn-buy">Buy Now</button>
-                    <button class="btn btn-show">Show Deatils</button>
+                    <button class="btn btn-show" routerLink="/courses/course/{{course.id}}">Show Deatils</button>
                 </div>
             </div>
         </div>  
     </ng-container>
 </div>
-
 

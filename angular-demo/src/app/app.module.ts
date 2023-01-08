@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { CoursesService } from './Services/courses.service';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ErrorComponent } from './error/error.component';
     CoursesComponent,
     HomeComponent,
     ErrorComponent,
+    
 
   ],
   imports: [
@@ -26,7 +28,7 @@ import { ErrorComponent } from './error/error.component';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
