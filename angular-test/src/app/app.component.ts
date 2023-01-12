@@ -1,3 +1,4 @@
+import { TaggedTemplateExpr } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,12 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+opaa() {
+
+}
+
+as: string ='asdasd';
+
 }
 
 
 
+
+
 if (typeof Worker !== 'undefined') {
-  // Create a new
+  // Create aa new
   const worker = new Worker(new URL('./app.worker', import.meta.url));
   worker.onmessage = ({ data }) => {
     console.log(`page got message: ${data}`);
