@@ -3,7 +3,10 @@
         <img src="{{course.image}}" width="560" height="280">
     </div>
     <div>
-        <h1 style="text-align: center;">{{course.name}}</h1>
+        <h1 style="text-align: center" *ngIf="!editMode">{{course.name}}</h1>
+        <div style="text-align: center;" *ngIf="editMode">
+            <input type="text" [(ngModel)]="course.name">
+        </div>
     </div>
     <div class="course-details">
         <div style="margin: 0px 10px;"><b>Author: </b>{{course.author}}</div>
@@ -17,4 +20,6 @@
         <p>{{course.description}}</p>
     </div>
 
+    <!-- <button [routerLink]="['/Courses/Course', course.id]" [queryParams]="{edit: true}">Edit</button> -->
+    <button (click)="appendQuerryParam()">Show</button>
 </div>

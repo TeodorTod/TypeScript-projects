@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from 'src/app/Services/courses.service';
 
 @Component({
@@ -9,11 +9,12 @@ import { CoursesService } from 'src/app/Services/courses.service';
 })
 export class CourseComponent implements OnInit, OnDestroy {
 
-  constructor(private service: CoursesService, private route: ActivatedRoute) { }
+  constructor(private service: CoursesService, private route: ActivatedRoute, private router: Router) { }
 
   course: any;
   courseId: any;
   RouteParamObservable: any;
+  editMode: boolean = false;
 
   ngOnInit(): void {
     // this.courseId = this.route.snapshot.params['id'];
@@ -24,10 +25,22 @@ export class CourseComponent implements OnInit, OnDestroy {
       this.courseId = param.get('id');
       this.course = this.service.courses.find(x => x.id == this.courseId);
     })
+
+    // this.editMode = Boolean(this.route.snapshot.queryParamMap.get('edit'));
+
+    this.route.queryParamMap.subscribe((param) => {
+      
+    })
+    console.log(this.editMode);
+    
   }
 
   ngOnDestroy() {
     this.RouteParamObservable.unsubscribe();
+  }
+
+  appendQuerryParam() {
+    this.router.navigate(['/Courses/Course', this.courseId], {queryParams: {edit: true}});
   }
 
 }
