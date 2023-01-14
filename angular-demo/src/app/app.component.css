@@ -26,3 +26,8 @@ ul {
   li a:hover {
     background-color: #111;
   }
+
+  .nav-container {
+    position: fixed;
+    width: 880px;
+  }
