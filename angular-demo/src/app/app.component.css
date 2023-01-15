@@ -28,6 +28,6 @@ ul {
   }
 
   .nav-container {
-    position: fixed;
+    position: relative;
     width: 880px;
   }
