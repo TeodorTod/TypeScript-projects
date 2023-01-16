@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from './Services/auth.service';
 
 
 
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'angular-demo';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {
 
   }
 
@@ -24,6 +25,14 @@ export class AppComponent implements OnInit {
 
   jumpTo(section: any) {
     document.getElementById(section)?.scrollIntoView({behavior: 'smooth'});
+  }
+
+  login() {
+    this.authService.login();
+  }
+
+  logout() {
+    this.authService.logout();
   }
   
 }
