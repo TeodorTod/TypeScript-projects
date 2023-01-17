@@ -14,10 +14,12 @@ opaa() {
 
 as: string ='asdasd';
 
+
+onClick() {
+  localStorage.setItem('token','xhja787')
 }
 
-
-
+}
 
 
 if (typeof Worker !== 'undefined') {
