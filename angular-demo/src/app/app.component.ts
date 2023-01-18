@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Event, NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { AuthService } from './Services/auth.service';
 
 
@@ -12,6 +12,7 @@ import { AuthService } from './Services/auth.service';
 
 export class AppComponent implements OnInit {
   title = 'angular-demo';
+  displayLoader: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private authService: AuthService) {
 
@@ -20,6 +21,16 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.fragment.subscribe((value) => {
     this.jumpTo(value);
+    });
+
+    this.router.events.subscribe((routerEvent: Event) => {
+      if (routerEvent instanceof NavigationStart) {
+        this.displayLoader = true;
+      }
+
+      if (routerEvent instanceof NavigationEnd || routerEvent instanceof NavigationCancel) {
+        this.displayLoader = false;
+      }
     });
   }
 
