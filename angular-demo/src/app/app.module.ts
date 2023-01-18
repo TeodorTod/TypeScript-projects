@@ -14,6 +14,7 @@ import { CourseComponent } from './courses/course/course.component';
 import { CourseGuardService } from './Services/course-guard.service';
 import { AuthService } from './Services/auth.service';
 import { CandeactivateGuardService } from './Services/candeactivate-guard.service';
+import { PersentagePipe } from './persentage.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CandeactivateGuardService } from './Services/candeactivate-guard.servic
     CoursesComponent,
     HomeComponent,
     ErrorComponent,
-    CourseComponent
+    CourseComponent,
+    PersentagePipe
   ],
   imports: [
     BrowserModule,
