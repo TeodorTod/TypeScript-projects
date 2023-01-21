@@ -1,26 +1,56 @@
-<div class="container">
-    <div style="text-align:center">
-      <h2>Contact Us</h2>
-      <p>Swing by for a cup of coffee, or leave us a message:</p>
-    </div>
-    <div class="row">
-      <div class="column">
-        <form action="/action_page.php">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" name="firstname" placeholder="Your name.."[(ngModel)]="firstName">
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lastname" placeholder="Your last name.." [(ngModel)]="lastName">
-          <label for="country">Country</label>
-          <select id="country" name="country" [(ngModel)]="country">
-            <option value="australia">Australia</option>
-            <option value="canada">Canada</option>
-            <option value="usa">USA</option>
-          </select>
-          <label for="subject">Subject</label>
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px" [(ngModel)]="subject"></textarea>
-          <input type="submit" value="Submit">
-        </form>
+<div class="form">
+  <h2 id="registration">Registration Form</h2>
+  <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+
+      <div ngModelGroup="personDetails" #personalDetail="ngModelGroup">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="Your name.."
+        name="firstname" ngModel >
+        <!-- <div>
+          <small *ngIf="fname.invalid && fname.touched">First Name is a required field</small>
+          <span *ngIf="firstname">You entered {{firstname}}</span>
+        </div> -->
+    
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Your last name.."
+        name="lastname" ngModel >
+        <!-- <div>
+          <span *ngIf="lastname">You entered {{lastname}}</span>
+        </div> -->
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your last email.."
+        name="email" ngModel >
+
+        <div>
+          <small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the required fields does not have valid value.</small>
+        </div>
+        <button (click)="setDefaultValues()">Set Default Values</button>
       </div>
-    </div>
-  </div>
-  
+      
+      <label for="country">Country</label>
+      <select id="country" name="country" [ngModel]="defaultCountry">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+        <option value="india">India</option>
+        <option value="uk">UK</option>
+      </select>
+
+      <label for="gender">Gender:</label>
+      <span *ngFor="let gen of gender">
+        <input type="radio" id="{{gen.id}}" value="{{gen.value}}" name="gender" [ngModel]="defaultGender">
+        <label for="male">{{gen.value}}</label>
+      </span>
+      <br><br>
+      <label>Hobbies <i>(Optional)</i></label>
+      <div class="form-inline">
+          <label><input type="checkbox" value="sports" name="hobbies" ngModel> Sports</label>
+          <label><input type="checkbox" value="movies" name="hobbies" ngModel> Movies</label>
+          <label><input type="checkbox" value="music" name="hobbies" ngModel> Music</label>
+      </div>
+    
+      <input type="submit" value="Submit" id="btn">
+    </form>
+</div>
+
