@@ -10,6 +10,7 @@ import { IDActivateComponent } from '../Services/candeactivate-guard.service';
 export class ContactComponent  {
   title = 'AngularForms';
   defaultCountry = 'india';
+  
 
   firstname:string = '';
   lastname:string = '';
@@ -27,8 +28,8 @@ export class ContactComponent  {
   
   @ViewChild('myForm') form: any = NgForm;
 
-  onSubmit(form: NgForm){
-    console.log(form);
+  onSubmit(){
+    console.log(this.form);
     
   }
 
