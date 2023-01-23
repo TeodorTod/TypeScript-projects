@@ -1,59 +1,38 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { IDActivateComponent } from '../Services/candeactivate-guard.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent  {
-  title = 'AngularForms';
-  defaultCountry = 'india';
-  
+export class ContactComponent implements OnInit  {
 
-  firstname:string = '';
-  lastname:string = '';
-  email: string = '';
-  gen:string = '';
-  country: string = '';
+  reactiveForm: FormGroup;
 
-  defaultGender = 'Female';
+  defaultGender = 'Male';
 
   gender = [
     {id: '1', value: 'Male'},
     {id: '2', value: 'Female'},
     {id: '3', value: 'Other'}
   ]
-  
-  @ViewChild('myForm') form: any = NgForm;
 
-  onSubmit(){
-    console.log(this.form);
+  ngOnInit() {
+    this.reactiveForm = new FormGroup({
+      firstname: new FormControl(null),
+      lastname: new FormControl(null),
+      email: new FormControl(null),
+      country: new FormControl('bulgaria'),
+      gender: new FormControl('male'),
+      hobbies: new FormControl(null),
+    });
+  }
+
+  onSubmit() {
+    console.log(this.reactiveForm);
     
   }
 
-  setDefaultValues(){
-    // this.form.value.personDetails.firstname = 'John';
-    // this.form.value.personDetails.lastname = 'smith';
-    // this.form.value.personDetails.email = 'abc@example.com';
-    // this.form.setValue({
-    //   country: '',
-    //   gender: '',
-    //   hobbies: '',
-    //   personDetails: {
-    //     firstname: 'John',
-    //     lastname: 'Smith',
-    //     email: 'abc@example.com'
-    //   }
-    // })
-
-    this.form.form.patchValue({
-      personDetails: {
-         firstname: 'John',
-         lastname: 'Smith',
-         email: 'abc@example.com'
-      }
-    })
-  }
 }
