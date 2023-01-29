@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { filter, Observable } from 'rxjs';
-import { AppService } from './app.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -10,65 +10,18 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
 
-  public hero: any;
 
-  constructor(private http: HttpClient,
-    private appService: AppService) {
 
-  }
+  constructor(private http: HttpClient) {
 
-  search() {
-    return this.http
-      .get('https://swapi.dev/api/people/1')
-      .subscribe(res => {
-        console.log(res);
-        
-      })
   }
   
-
-
   ngOnInit(): void {
 
-    this.appService.getData()
-      .subscribe(data => this.hero = data)
-    
-      
-    //promise
-    const promise = new Promise(resolve => {
-      setTimeout(() => {
-        resolve('Promise working')
-        resolve('Promise working1')
-        resolve('Promise working2')
-      }, 2000)
-    })
-    promise.then(result => console.log(result))
-
-
-    // fetch('https://swapi.dev/api/people/1')
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     console.log(result);
-        
-    //   })
-    
-
-    //observable
-    const observable = new Observable(sub => {
-      setTimeout(() => {
-        sub.next('Observable working')
-        sub.next('Observable working1')
-        sub.next('Observable working2')
-        sub.next('Observable working3')
-      }, 2000)
-    });
-
-    observable.subscribe(result => console.log(result))
   }
 
   onClick() {
     localStorage.setItem('token', 'xhja787')
-    console.log(this.hero);
     
   }
 
