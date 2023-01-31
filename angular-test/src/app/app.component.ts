@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserService } from './services/user.service';
 
 
 @Component({
@@ -12,12 +13,29 @@ export class AppComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
 
+  }
+
+  onGetUsers(): void {
+    this.userService.getUsers().subscribe(
+      (response) => console.log(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting users')
+    )
+  }
+
+  getUser(): void {
+    this.userService.getUser().subscribe((res) => {
+      console.log(res.address.street);
+      
+    }
+    )
   }
   
   ngOnInit(): void {
-
+    this.onGetUsers();
+    this.getUser();
   }
 
   onClick() {
