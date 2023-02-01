@@ -25,17 +25,17 @@ export class AppComponent implements OnInit {
     )
   }
 
-  getUser(): void {
-    this.userService.getUser().subscribe((res) => {
-      console.log(res.address.street);
-      
-    }
+  onGetUser(): void {
+    this.userService.getUser().subscribe(
+      (response) => console.log(response),
+      (error: any) => console.log(error),
+      () => console.log('Done getting user 1')
     )
   }
   
   ngOnInit(): void {
     this.onGetUsers();
-    this.getUser();
+    this.onGetUser();
   }
 
   onClick() {
