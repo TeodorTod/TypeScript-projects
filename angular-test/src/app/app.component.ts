@@ -12,9 +12,10 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
 
   private user: User = {
-    'name': 'Petar Howell',
-    'username': 'pete123',
-    'email': 'pete@abv.tv',
+    id: 5,
+    'name': 'Misho Howell',
+    'username': 'misho',
+    'email': 'mi@abv.tv',
     'address': {
       'street': 'Victor Plains',
       'suite': 'Suite 879',
@@ -62,11 +63,21 @@ export class AppComponent implements OnInit {
       () => console.log('Done creating user')
     )
   }
+
+  onUpdateUser(): void {
+    this.userService.createUser(this.user).subscribe(
+      (response) => console.log(response),
+      (error: any) => console.log(error),
+      () => console.log('Done update user')
+    )
+  }
   
   ngOnInit(): void {
     this.onGetUsers();
     // this.onGetUser();
-    this.onCreateUser();
+    // this.onCreateUser();
+    this.onUpdateUser();
+
   }
 
   onClick() {
@@ -75,7 +86,6 @@ export class AppComponent implements OnInit {
   }
 
 }
-
 
 if (typeof Worker !== 'undefined') {
   // Create aa new
