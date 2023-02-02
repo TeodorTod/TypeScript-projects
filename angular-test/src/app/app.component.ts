@@ -12,7 +12,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
 
   private user: User = {
-    id: 5,
+    'id': 4,
     'name': 'Misho Howell',
     'username': 'misho',
     'email': 'mi@abv.tv',
@@ -71,13 +71,23 @@ export class AppComponent implements OnInit {
       () => console.log('Done update user')
     )
   }
+
+  onPatchUser(): void {
+    this.userService.createUser(this.user).subscribe(
+      (response) => console.log(response),
+      (error: any) => console.log(error),
+      () => console.log('Done update user')
+    )
+  }
   
   ngOnInit(): void {
-    this.onGetUsers();
+    this.onPatchUser();
     // this.onGetUser();
     // this.onCreateUser();
-    this.onUpdateUser();
-
+    setTimeout(() => {
+      
+      this.onGetUsers();
+    }, 1000)
   }
 
   onClick() {
