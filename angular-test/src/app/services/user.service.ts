@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
-import { environment } from './environment/environment';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,9 @@ export class UserService {
 
   patchUser(user: User): Observable<User> {
     return this.http.patch<User>(`${this.apiUrl}/users/${user.id}`, user)
+  }
+
+  deleteUser(id: number): Observable<unknown> {
+    return this.http.delete<unknown>(`${this.apiUrl}/users/${id}`);
   }
 }

@@ -79,20 +79,23 @@ export class AppComponent implements OnInit {
       () => console.log('Done update user')
     )
   }
-  
+
+  onDeleteUser(): void {
+    this.userService.deleteUser(3).subscribe(
+      (response) => console.log(response),
+      (error: any) => console.log(error),
+      () => console.log('Done deleting user')
+    )
+  }
+
   ngOnInit(): void {
-    this.onPatchUser();
-    // this.onGetUser();
-    // this.onCreateUser();
-    setTimeout(() => {
-      
-      this.onGetUsers();
-    }, 1000)
+    this.onGetUsers();
+    this.onDeleteUser();
   }
 
   onClick() {
     localStorage.setItem('token', 'xhja787')
-    
+
   }
 
 }
