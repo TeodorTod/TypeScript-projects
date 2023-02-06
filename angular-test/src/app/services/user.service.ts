@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
@@ -14,8 +14,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    let myParams = new HttpParams().set('page', '6').set('sort', 'true');
-    return this.http.get<User[]>(`${this.apiUrl}/users`, {params: myParams})
+    
+    return this.http.get<User[]>(`${this.apiUrl}/users`)
   }
 
   getUser(): Observable<User> {
@@ -37,4 +37,10 @@ export class UserService {
   deleteUser(id: number): Observable<unknown> {
     return this.http.delete<unknown>(`${this.apiUrl}/users/${id}`);
   }
+
+  uploadFiles(formData: FormData): Observable<HttpEvent<string[]>> {
+    return this.http.post<string[]>(`${this.apiUrl}/users`, {
+      observe: 'events', reportProgress: true});
+  }
+
 }
