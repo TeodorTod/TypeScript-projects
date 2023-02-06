@@ -39,7 +39,7 @@ export class UserService {
   }
 
   uploadFiles(formData: FormData): Observable<HttpEvent<string[]>> {
-    return this.http.post<string[]>(`${this.apiUrl}/users`, {
+    return this.http.get<string[]>(`${this.apiUrl}/users`, {
       observe: 'events', reportProgress: true});
   }
 
