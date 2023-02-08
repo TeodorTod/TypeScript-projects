@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { map, of } from 'rxjs';
-import { User } from './interface/user';
+import { BehaviorSubject, filter, map, of } from 'rxjs';
+// import { User } from './interface/user';
 import { UserService } from './services/user.service';
 
 
@@ -18,8 +18,11 @@ export class AppComponent implements OnInit {
     {id: '3', name: 'Mike', isActive: true}
   ]
 
+  user$ = new BehaviorSubject<{id: string; name: string}| null>(null)
+
   users$ = of(this.users);
   usernames$ = this.users$.pipe(map((users) => users.map((user) => user.name)))
+  filteredusers$ = this.users$.pipe(filter(users => users.every(user => user.isActive)))
 
 
   constructor(private http: HttpClient, private userService: UserService) {
@@ -29,10 +32,14 @@ export class AppComponent implements OnInit {
   
 
   ngOnInit(): void {
-   console.log(this.usernames$.subscribe(res => {
-    console.log(res);
-    
-   }));
+    setTimeout(() => {
+      this.user$.next({id: '1', name: 'Pesho'})
+    }, 2000)
+
+    this.user$.subscribe(res => {
+      console.log(res);
+      
+    })
    
   }
 
