@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { map, of } from 'rxjs';
 import { User } from './interface/user';
 import { UserService } from './services/user.service';
 
@@ -11,86 +12,28 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
 
-  private user: User = {
-    'id': 4,
-    'name': 'Misho Howell',
-    'username': 'misho',
-    'email': 'mi@abv.tv',
-    'address': {
-      'street': 'Victor Plains',
-      'suite': 'Suite 879',
-      'city': 'Wisokyburgh',
-      'zipcode': '90566-7771',
-      'geo': {
-        'lat': '-43.9509',
-        'lng': '-34.4618'
-      }
-    },
-    'phone': '010-692-6593 x09125',
-    'website': 'anastasia.net',
-    'company': {
-      'name': 'Deckow-Crist',
-      'catchPhrase': 'Proactive didactic contingency',
-      'bs': 'synergize scalable supply-chains'
-    }
-  }
+  users = [
+    {id: '1', name: 'John', isActive: true},
+    {id: '2', name: 'Peter', isActive: true},
+    {id: '3', name: 'Mike', isActive: true}
+  ]
+
+  users$ = of(this.users);
+  usernames$ = this.users$.pipe(map((users) => users.map((user) => user.name)))
 
 
   constructor(private http: HttpClient, private userService: UserService) {
 
   }
 
-  onGetUsers(): void {
-    this.userService.getUsers().subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done getting users')
-    )
-  }
-
-  onGetUser(): void {
-    this.userService.getUser().subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done getting user 1')
-    )
-  }
-
-  onCreateUser(): void {
-    this.userService.createUser(this.user).subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done creating user')
-    )
-  }
-
-  onUpdateUser(): void {
-    this.userService.createUser(this.user).subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done update user')
-    )
-  }
-
-  onPatchUser(): void {
-    this.userService.createUser(this.user).subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done update user')
-    )
-  }
-
-  onDeleteUser(): void {
-    this.userService.deleteUser(3).subscribe(
-      (response) => console.log(response),
-      (error: any) => console.log(error),
-      () => console.log('Done deleting user')
-    )
-  }
+  
 
   ngOnInit(): void {
-    this.onGetUsers();
-    this.onDeleteUser();
+   console.log(this.usernames$.subscribe(res => {
+    console.log(res);
+    
+   }));
+   
   }
 
   onClick() {
