@@ -1,6 +1,2 @@
 <h1>test</h1>
-<button (click)="onClick()">Add</button>
-<!-- <div *ngFor="let user of users$ | async">{{user.name}}</div> -->
-<div *ngFor="let user of usernames$ | async">{{user}}</div>
-
-<div *ngIf="user$ | async">{{(user$|async)?.name}}</div>
+<h2 *ngIf="status">Current status is: {{status}}</h2>

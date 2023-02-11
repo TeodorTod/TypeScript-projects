@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, filter, map, of } from 'rxjs';
-// import { User } from './interface/user';
-import { UserService } from './services/user.service';
+import { Observable, of } from 'rxjs';
+
 
 
 @Component({
@@ -11,41 +9,33 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  users = [
-    {id: '1', name: 'John', isActive: true},
-    {id: '2', name: 'Peter', isActive: true},
-    {id: '3', name: 'Mike', isActive: true}
-  ]
-
-  user$ = new BehaviorSubject<{id: string; name: string}| null>(null)
-
-  users$ = of(this.users);
-  usernames$ = this.users$.pipe(map((users) => users.map((user) => user.name)))
-  filteredusers$ = this.users$.pipe(filter(users => users.every(user => user.isActive)))
-
-
-  constructor(private http: HttpClient, private userService: UserService) {
-
-  }
-
-  
+  users: any;
+  userobservable$: any;
+  status: any;
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.user$.next({id: '1', name: 'Pesho'})
-    }, 2000)
+    this.users = ['misho', 'petko', 'gosho'];
+    this.userobservable$=of(this.users);
+    new Observable(item => {
 
-    this.user$.subscribe(res => {
-      console.log(res);
+      setTimeout(() => {
+        item.next('in Progress')
+      }, 2000)
+
+      setTimeout(() => {
+        item.next('Pending')
+      }, 4000)
+
+      setTimeout(() => {
+        item.next('Done')
+      }, 6000)
+    }).subscribe(res => {
+      this.status = res;
       
     })
+    
+  
    
-  }
-
-  onClick() {
-    localStorage.setItem('token', 'xhja787')
-
   }
 
 }
