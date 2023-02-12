@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { DemoComponent } from './demo/demo.component';
+import { DestService } from './service/dest.service';
 
 
 
@@ -13,29 +15,18 @@ export class AppComponent implements OnInit {
   userobservable$: any;
   status: any;
 
-  ngOnInit(): void {
-    this.users = ['misho', 'petko', 'gosho'];
-    this.userobservable$=of(this.users);
-    new Observable(item => {
-
-      setTimeout(() => {
-        item.next('in Progress')
-      }, 2000)
-
-      setTimeout(() => {
-        item.next('Pending')
-      }, 4000)
-
-      setTimeout(() => {
-        item.next('Done')
-      }, 6000)
-    }).subscribe(res => {
-      this.status = res;
+  constructor(private service: DestService) {
       
-    })
-    
+  }  
+
   
-   
+
+  ngOnInit(): void {
+    this.service.statusInfo().subscribe((res:any) => {
+      this.status = res;
+    })
+    this.service.bsubjectStatus$.subscribe(x => console.log(x))
+    this.service.bsubjectStatus$.next('Opaa');
   }
 
 }
