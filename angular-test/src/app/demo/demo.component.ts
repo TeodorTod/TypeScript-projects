@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-demo',
@@ -8,6 +9,31 @@ import { Observable } from 'rxjs';
 })
 export class DemoComponent implements OnInit {
 
-  ngOnInit () {
+  constructor(private http: HttpClient) {
+
   }
+
+  mainUrl: string = 'https://swapi.dev/api/people/1';
+
+  
+
+  ngOnInit () {
+    let subject$ = new BehaviorSubject<number>(0)
+    subject$.subscribe(res => {
+      console.log(`Observer 1: ${res}`);
+    })
+     
+    subject$.next(1);
+
+    subject$.subscribe(res => {
+      console.log(`Observer 2: ${res}`);
+    })
+     
+    subject$.next(2);
+
+  }
+
+ 
+
+  
 }

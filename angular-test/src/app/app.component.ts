@@ -19,14 +19,12 @@ export class AppComponent implements OnInit {
       
   }  
 
+
+
   
 
   ngOnInit(): void {
-    this.service.statusInfo().subscribe((res:any) => {
-      this.status = res;
-    })
-    this.service.bsubjectStatus$.subscribe(x => console.log(x))
-    this.service.bsubjectStatus$.next('Opaa');
+    
   }
 
 }
