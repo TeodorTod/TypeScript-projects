@@ -1,2 +1,5 @@
 <h1>test</h1>
-<h2 *ngIf="status">Current status is: {{status}}</h2>
+<!-- <h2 *ngFor="let user of users$ | async">{{user.name}}</h2> -->
+<!-- <h2 *ngFor="let user of usernames$ | async">{{user}}</h2> -->
+<!-- <h2 *ngFor="let user of activeUsers$ | async">{{user.name}}</h2> -->
+<div *ngIf="user$ | async as user">{{user.name}}</div>

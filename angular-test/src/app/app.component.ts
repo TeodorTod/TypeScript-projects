@@ -1,9 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { DemoComponent } from './demo/demo.component';
-import { DestService } from './service/dest.service';
-
-
+import { BehaviorSubject, filter, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +8,36 @@ import { DestService } from './service/dest.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  users: any;
-  userobservable$: any;
-  status: any;
+ 
+  users = [
+    {id: 1, name: 'Gosho', isActive: true},
+    {id: 2, name: 'Pesho', isActive: true},
+    {id: 3, name: 'Misho', isActive: true},
+  ];
 
-  constructor(private service: DestService) {
+  user$ = new BehaviorSubject<{id: string, name: string}| null>(null)
+
+  users$ = of(this.users);
+  usernames$ = this.users$.pipe(map((users) => users.map(user => user.name)))
+  activeUsers$ = this.users$.pipe(filter((users) => users.every((user) => user.isActive)))
+
+  constructor() {
       
   }  
 
-
-
-  
-
   ngOnInit(): void {
-    
+       setTimeout(() => {
+        this.user$.next({id: '1', name: 'ivan'})
+       }, 2000)
+       
+       this.user$.subscribe(res => console.log(res)
+       )
   }
 
+ 
+
+  
+  
 }
 
 if (typeof Worker !== 'undefined') {
