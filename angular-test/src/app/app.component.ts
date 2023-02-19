@@ -8,36 +8,38 @@ import { BehaviorSubject, filter, map, Observable, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- 
+
   users = [
-    {id: 1, name: 'Gosho', isActive: true},
-    {id: 2, name: 'Pesho', isActive: true},
-    {id: 3, name: 'Misho', isActive: true},
+    { id: 1, name: 'Gosho', isActive: true },
+    { id: 2, name: 'Pesho', isActive: true },
+    { id: 3, name: 'Misho', isActive: true },
   ];
 
-  user$ = new BehaviorSubject<{id: string, name: string}| null>(null)
+  user$ = new BehaviorSubject<{ id: string, name: string } | null>(null)
 
   users$ = of(this.users);
   usernames$ = this.users$.pipe(map((users) => users.map(user => user.name)))
   activeUsers$ = this.users$.pipe(filter((users) => users.every((user) => user.isActive)))
 
   constructor() {
-      
-  }  
 
-  ngOnInit(): void {
-       setTimeout(() => {
-        this.user$.next({id: '1', name: 'ivan'})
-       }, 2000)
-       
-       this.user$.subscribe(res => console.log(res)
-       )
   }
 
- 
+  ngOnInit(): void {
+    this.user$.next({ id: '2', name: 'pesho' })
 
-  
-  
+    setTimeout(() => {
+      this.user$.next({ id: '1', name: 'ivan' })
+    }, 2000)
+
+    this.user$.subscribe(res => console.log(res)
+    )
+  }
+
+
+
+
+
 }
 
 if (typeof Worker !== 'undefined') {
