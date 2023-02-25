@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, filter, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, filter, interval, map, Observable, of, takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,8 @@ import { BehaviorSubject, filter, map, Observable, of } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
+
+  data$ = interval(1000);
   users = [
     { id: 1, name: 'Gosho', isActive: true },
     { id: 2, name: 'Pesho', isActive: true },
@@ -26,6 +28,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.data$.pipe(takeWhile(value => value <= 5)).subscribe(res => {
+      console.log(`data: ${res}`);
+    })
+
+
+
+
     this.user$.next({ id: '2', name: 'pesho' })
 
     setTimeout(() => {
